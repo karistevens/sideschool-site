@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kari Stevens | UI/UX Designer Portfolio | San Francisco</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700&display=swap" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Epilogue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fafafa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        header {
+            padding: 2rem 0;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2d2d2d;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #000;
+        }
+
+        .hero {
+            padding: 6rem 0;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: #2d2d2d;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #666;
+            max-width: 600px;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+
+
+        .portfolio {
+            padding: 4rem 0;
+        }
+
+        .portfolio h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            cursor: pointer;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 800px;
+            width: 90%;
+            margin: auto;
+            position: relative;
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+        }
+
+
+
+        .contact {
+            padding: 4rem 0;
+            text-align: center;
+            background-color: #2d2d2d;
+            color: white;
+        }
+
+        .contact h2 {
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            opacity: 0.8;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4ECDC4;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: #4ECDC4;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #45b8b0;
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        #form-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 4px;
+            display: none;
+        }
+
+        #form-message.success {
+            background-color: rgba(78, 205, 196, 0.1);
+            color: #4ECDC4;
+            display: block;
+        }
+
+        #form-message.error {
+            background-color: rgba(255, 107, 107, 0.1);
+            color: #FF6B6B;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 1rem;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+</head>
+<body>
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <img class="modal-image" src="" alt="Project Image">
+            <h2 class="modal-title"></h2>
+            <p class="modal-description"></p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init();
+            
+            // Lazy load images
+            document.querySelectorAll('img').forEach(img => {
+                img.setAttribute('loading', 'lazy');
+            });
+
+            // Modal functionality
+            const modal = document.getElementById('projectModal');
+            const modalImage = modal.querySelector('.modal-image');
+            const modalTitle = modal.querySelector('.modal-title');
+            const modalDescription = modal.querySelector('.modal-description');
+            const modalClose = modal.querySelector('.modal-close');
+
+            // Project data with external links
+            const projectData = [
+                { title: "Mobile App Design", description: "A comprehensive case study showcasing the redesign of a lifestyle app. This project demonstrates user-centered design principles and iterative development process.", externalLink: null },
+                { title: "Website Redesign", description: "An in-depth look at improving the user experience for an e-commerce platform, focusing on conversion optimization and user engagement.", externalLink: "https://example.com/website-redesign" },
+                { title: "Design System", description: "A detailed overview of creating and implementing a comprehensive design system for a tech startup, ensuring consistency across all platforms.", externalLink: null },
+                { title: "Healthcare App UI", description: "An innovative approach to healthcare management through intuitive interface design and user-friendly navigation.", externalLink: "https://example.com/healthcare-app" },
+                { title: "Financial Dashboard", description: "A complex data visualization project that simplifies financial analytics through clear and interactive dashboard design.", externalLink: null },
+                { title: "Travel App Design", description: "A seamless travel planning experience that combines beautiful visuals with practical functionality.", externalLink: "https://example.com/travel-app" },
+                { title: "Social Platform", description: "A redesign project focused on improving user engagement and community interaction through intuitive interface design.", externalLink: null },
+                { title: "Smart Home App", description: "An innovative interface for controlling smart home devices, emphasizing ease of use and accessibility.", externalLink: "https://example.com/smart-home" }
+            ];
+
+            // Reveal projects on scroll
+            const projects = document.querySelectorAll('.project-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            projects.forEach((project, index) => {
+                observer.observe(project);
+                
+                project.addEventListener('click', () => {
+                    const projectInfo = projectData[index];
+                    if (projectInfo.externalLink) {
+                        window.open(projectInfo.externalLink, '_blank');
+                    } else {
+                        modalImage.src = project.querySelector('img').src;
+                        modalTitle.textContent = projectInfo.title;
+                        modalDescription.textContent = projectInfo.description;
+                        modal.classList.add('active');
+                    }
+                });
+            });
+
+            modalClose.addEventListener('click', () => {
+                modal.classList.remove('active');
+            });
+
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        });
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formMessage = document.getElementById('form-message');
+            const submitBtn = form.querySelector('.submit-btn');
+            const formData = new FormData(form);
+
+            try {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+                
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        access_key: 'e85ac941-51f0-4da8-b27e-f42617bc19d3',  // Web3Forms access key
+                        name: formData.get('name'),
+                        email: formData.get('email'),
+                        message: formData.get('message'),
+                        to_email: 'hello@karistevens.com'
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    formMessage.textContent = 'Thank you! Your message has been sent successfully.';
+                    formMessage.className = 'success';
+                    form.reset();
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                formMessage.textContent = 'Oops! Something went wrong. Please try again later.';
+                formMessage.className = 'error';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+                formMessage.style.display = 'block';
+            }
+            
+            // Reset form
+            form.reset();
+        }
+    </script>
+    <header>
+        <nav class="container">
+            <div class="logo">Kari Stevens</div>
+
+            <div class="nav-links">
+                <a href="#portfolio">Work</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div>
+                    <div class="subtitle">UI/UX Design</div>
+                    <h1>Hi, I'm Kari</h1>
+                    <p>I'm a UI/UX designer with a background in Visual Design and a passion for simplifying products and processes.</p>
+                    <p>I'm currently designing from San Francisco, California.</p>
+                </div>
+                <div class="hero-image">
+                    <img src="images/kari_portrait.png" alt="Kari Stevens - UI/UX Designer">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2>Side School Challenges</h2>
+            <div class="projects">
+                <div class="project-card">
+                    <img src="images/challenge-1.png" alt="Side School Challenge 1">
+                    <div class="project-info">
+                        <h3>Side School Challenge 1</h3>
+                        <p>First challenge project for Side School</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="images/challenge_2.png" alt="Side School Challenge 2">
+                    <div class="project-info">
+                        <h3>Side School Challenge 2</h3>
+                        <p>Second challenge project for Side School</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80" alt="Design System Project">
+                    <div class="project-info">
+                        <h3>Design System</h3>
+                        <p>Creating a comprehensive design system for a tech startup</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?auto=format&fit=crop&w=800&q=80" alt="Healthcare App UI Design">
+                    <div class="project-info">
+                        <h3>Healthcare App UI</h3>
+                        <p>Designing an intuitive healthcare management application</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Financial Dashboard">
+                    <div class="project-info">
+                        <h3>Financial Dashboard</h3>
+                        <p>Creating an analytics dashboard for financial data visualization</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=800&q=80" alt="Travel App Design">
+                    <div class="project-info">
+                        <h3>Travel App Design</h3>
+                        <p>Designing a seamless travel planning experience</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80" alt="Social Media Platform">
+                    <div class="project-info">
+                        <h3>Social Platform</h3>
+                        <p>Redesigning a social media platform for better engagement</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Smart Home App">
+                    <div class="project-info">
+                        <h3>Smart Home App</h3>
+                        <p>Creating an interface for home automation control</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" alt="Business Analytics Tool">
+                    <div class="project-info">
+                        <h3>Analytics Tool</h3>
+                        <p>Designing a business intelligence dashboard</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?auto=format&fit=crop&w=800&q=80" alt="Fitness Tracking App">
+                    <div class="project-info">
+                        <h3>Fitness App</h3>
+                        <p>Building a motivational fitness tracking experience</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1497493292307-31c376b6e479?auto=format&fit=crop&w=800&q=80" alt="Food Delivery App">
+                    <div class="project-info">
+                        <h3>Food Delivery</h3>
+                        <p>Streamlining the food ordering experience</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=800&q=80" alt="Educational Platform">
+                    <div class="project-info">
+                        <h3>Learning Platform</h3>
+                        <p>Designing an engaging online learning experience</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80" alt="Project Management Tool">
+                    <div class="project-info">
+                        <h3>Project Manager</h3>
+                        <p>Creating an efficient project management interface</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Music Streaming App">
+                    <div class="project-info">
+                        <h3>Music App</h3>
+                        <p>Redesigning a music streaming platform</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Let's Work Together</h2>
+            <div class="contact-links">
+                <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+                <a href="https://dribbble.com" target="_blank">Dribbble</a>
+                <a href="https://behance.net" target="_blank">Behance</a>
+            </div>
+            <form class="contact-form" id="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+                <div id="form-message"></div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>
