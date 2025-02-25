@@ -60,7 +60,7 @@
         }
 
         .hero {
-            padding: 6rem 0;
+            padding: 4rem 0;
             opacity: 0;
             animation: fadeIn 1s ease-out forwards;
             position: relative;
@@ -114,6 +114,7 @@
 
         .portfolio {
             padding: 4rem 0;
+            background-color: white;
         }
 
         .portfolio h2 {
@@ -123,8 +124,21 @@
 
         .projects {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        @media (max-width: 1024px) {
+            .projects {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .projects {
+                grid-template-columns: 1fr;
+            }
         }
 
         .project-card {
@@ -136,6 +150,8 @@
             opacity: 0;
             transform: translateY(20px);
             cursor: pointer;
+            width: 100%;
+            height: 100%;
         }
 
         .modal {
@@ -366,21 +382,27 @@
 
             // Modal functionality
             const modal = document.getElementById('projectModal');
-            const modalImage = modal.querySelector('.modal-image');
+            const modalImage = modal.querySelector('.modal-image'); 
             const modalTitle = modal.querySelector('.modal-title');
             const modalDescription = modal.querySelector('.modal-description');
             const modalClose = modal.querySelector('.modal-close');
 
             // Project data with external links
             const projectData = [
-                { title: "Mobile App Design", description: "A comprehensive case study showcasing the redesign of a lifestyle app. This project demonstrates user-centered design principles and iterative development process.", externalLink: null },
-                { title: "Website Redesign", description: "An in-depth look at improving the user experience for an e-commerce platform, focusing on conversion optimization and user engagement.", externalLink: "https://example.com/website-redesign" },
-                { title: "Design System", description: "A detailed overview of creating and implementing a comprehensive design system for a tech startup, ensuring consistency across all platforms.", externalLink: null },
-                { title: "Healthcare App UI", description: "An innovative approach to healthcare management through intuitive interface design and user-friendly navigation.", externalLink: "https://example.com/healthcare-app" },
-                { title: "Financial Dashboard", description: "A complex data visualization project that simplifies financial analytics through clear and interactive dashboard design.", externalLink: null },
-                { title: "Travel App Design", description: "A seamless travel planning experience that combines beautiful visuals with practical functionality.", externalLink: "https://example.com/travel-app" },
-                { title: "Social Platform", description: "A redesign project focused on improving user engagement and community interaction through intuitive interface design.", externalLink: null },
-                { title: "Smart Home App", description: "An innovative interface for controlling smart home devices, emphasizing ease of use and accessibility.", externalLink: "https://example.com/smart-home" }
+                { title: "Challenge 1: Custom Scoping GPT", description: "A comprehensive case study showcasing the redesign of a lifestyle app. This project demonstrates user-centered design principles and iterative development process.", externalLink: "https://chat.openai.com/g/g-67ae6a9f0bb8819186868aa52b386f5b-kari-s-scope-gpt" },
+                { title: "Challenge 2: AI Presentation", description: "Gamma, ChatGPT", externalLink: "https://gamma.app/docs/FemHealth-Brand-Digital-Redesign-njyk8iwp6ph3tnc" },
+                { title: "Challenge 3: AI Visual Concept Exploration", description: "Using Krea AI to explore various visual concepts and design directions for the project, demonstrating the power of AI in the creative ideation process.", externalLink: null },
+                { title: "Challenge 4: AI Visual Iteration", description: "Krea", externalLink: null },
+                { title: "Challenge 5: AI Image Model", description: "Krea", externalLink: "https://www.krea.ai/apps/image/flux?style=ooqzxm0y8" },
+                { title: "Challenge 6: AI Video Generation", description: "Description here", externalLink: "https://vimeo.com/1060218029/62edb5f6f6?share=copy" },
+                { title: "Challenge 7: Royalty Free Music and Sound Effects", description: "Suno, Capcut", externalLink: "https://vimeo.com/1060218019/9bde492c08?share=copy" },
+                { title: "Challenge 8: Creative Variants", description: "Figma AI", externalLink: "https://www.figma.com/design/vbkaQ3zLkfILpan8pxHFkQ/Side-School-Exercise-8---Kari?node-id=0-1&t=MTMTQATh4ddRuywD-1" },
+                { title: "Challenge 9: Quick Webpage Redesign with AI", description: "HTML.to.design Figma Plugin, Krea, ChatGPT", externalLink: "https://www.figma.com/design/eZ2ipzYT4DqXCJQMtR2q2g/Side-School-Exercise-9---Kari?node-id=0-1&t=0226ZM7Ir6lsGWdC-1" },
+                { title: "Challenge 10: Prompt Chain for UX and Content Improvements", description: "V7 Go", externalLink: "https://go.v7labs.com/0190e503-c096-7e5d-976f-4649d03bf24d/projects/01952eea-4a3f-7eb0-bb55-f2595c9d69fa" },
+                { title: "Challenge 11: Automated Client Profiles", description: "V7 Go", externalLink: "https://go.v7labs.com/0190e503-c096-7e5d-976f-4649d03bf24d/projects/0195300e-87a6-7784-8a0d-91c4bff2c35f" },
+                { title: "Challenge 12: AI Feedback for Design Iteration", description: "Claude, Figma, Krea", externalLink: "https://www.loom.com/share/b201770e3278415e951d63c65174fddb?sid=656bc258-2414-4e2a-99fe-4bfbe9d67ab5" },
+                { title: "Challenge 13: AI Generated Working Prototype", description: "Figma, Lovable", externalLink: "https://preview--daily-grind-garden.lovable.app/" },
+                { title: "Challenge 14: Automated Project Management Workflow", description: "Serif AI, Lindy", externalLink: "https://chat.lindy.ai/home?templateId=67bbff0271793e4bcb956c49" }
             ];
 
             // Reveal projects on scroll
@@ -502,99 +524,99 @@
                 <div class="project-card">
                     <img src="images/challenge-1.png" alt="Side School Challenge 1">
                     <div class="project-info">
-                        <h3>Side School Challenge 1</h3>
-                        <p>First challenge project for Side School</p>
+                        <h3>Challenge 1: Custom Scoping GPT</h3>
+                        <p>ChatGPT</p>
                     </div>
                 </div>
                 <div class="project-card">
                     <img src="images/challenge_2.png" alt="Side School Challenge 2">
                     <div class="project-info">
-                        <h3>Side School Challenge 2</h3>
-                        <p>Second challenge project for Side School</p>
+                        <h3>Challenge 2: AI Presentation</h3>
+                        <p>Gamma, ChatGPT</p>
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80" alt="Design System Project">
+                    <img src="images/challenge_3.png" alt="Side School Challenge 3">
                     <div class="project-info">
-                        <h3>Design System</h3>
-                        <p>Creating a comprehensive design system for a tech startup</p>
+                        <h3>Challenge 3: AI Visual Concept Exploration</h3>
+                        <p>Krea</p>
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?auto=format&fit=crop&w=800&q=80" alt="Healthcare App UI Design">
+                    <img src="images/challenge_4.png" alt="Side School Challenge 4">
                     <div class="project-info">
-                        <h3>Healthcare App UI</h3>
-                        <p>Designing an intuitive healthcare management application</p>
+                        <h3>Challenge 4: AI Visual Iteration</h3>
+                        <p>Krea</p>
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Financial Dashboard">
+                    <img src="images/challenge_5.png" alt="Side School Challenge 5">
                     <div class="project-info">
-                        <h3>Financial Dashboard</h3>
-                        <p>Creating an analytics dashboard for financial data visualization</p>
+                        <h3>Challenge 5: AI Image Model</h3>
+                        <p>Krea</p>
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=800&q=80" alt="Travel App Design">
+                    <img src="images/challenge_6.png" alt="Side School Challenge 6">
                     <div class="project-info">
-                        <h3>Travel App Design</h3>
-                        <p>Designing a seamless travel planning experience</p>
+                        <h3>Challenge 6: AI Video Generation</h3>
+                        <p>Krea, ChatGPT</p>
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80" alt="Social Media Platform">
+                    <img src="images/challenge_7.png" alt="Side School Challenge 7">
                     <div class="project-info">
-                        <h3>Social Platform</h3>
-                        <p>Redesigning a social media platform for better engagement</p>
+                        <h3>Challenge 7: Royalty Free Music and Sound Effects</h3>
+                        <p>Suno, Capcut</p>
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Smart Home App">
+                    <img src="images/challenge_8.png" alt="Side School Challenge 8">
                     <div class="project-info">
-                        <h3>Smart Home App</h3>
-                        <p>Creating an interface for home automation control</p>
+                        <h3>Challenge 8: Creative Variants</h3>
+                        <p>Figma AI</p>
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" alt="Business Analytics Tool">
+                    <img src="images/challenge_9.png" alt="Side School Challenge 9">
                     <div class="project-info">
-                        <h3>Analytics Tool</h3>
-                        <p>Designing a business intelligence dashboard</p>
+                        <h3>Challenge 9: Quick Webpage Redesign</h3>
+                        <p>HTML.to.design Figma Plugin, Krea, ChatGPT</p>
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?auto=format&fit=crop&w=800&q=80" alt="Fitness Tracking App">
+                    <img src="images/challenge_10.png" alt="Side School Challenge 10">
                     <div class="project-info">
-                        <h3>Fitness App</h3>
-                        <p>Building a motivational fitness tracking experience</p>
+                        <h3>Challenge 10: Prompt Chain for UX and Content Improvements</h3>
+                        <p>V7 Go</p>
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1497493292307-31c376b6e479?auto=format&fit=crop&w=800&q=80" alt="Food Delivery App">
+                    <img src="images/challenge_11.png" alt="Side School Challenge 11">
                     <div class="project-info">
-                        <h3>Food Delivery</h3>
-                        <p>Streamlining the food ordering experience</p>
+                        <h3>Challenge 11: Automated Client Profiles</h3>
+                        <p>V7 Go</p>
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=800&q=80" alt="Educational Platform">
+                    <img src="images/challenge_12.png" alt="Side School Challenge 12">
                     <div class="project-info">
-                        <h3>Learning Platform</h3>
-                        <p>Designing an engaging online learning experience</p>
+                        <h3>Challenge 12: AI Feedback for Design Iteration</h3>
+                        <p>Claude, Figma, Krea</p>
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80" alt="Project Management Tool">
+                    <img src="images/challenge_13.png" alt="Side School Challenge 13">
                     <div class="project-info">
-                        <h3>Project Manager</h3>
-                        <p>Creating an efficient project management interface</p>
+                        <h3>Challenge 13: AI Generated Working Prototype</h3>
+                        <p>Figma, Lovable</p>
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Music Streaming App">
+                    <img src="images/challenge_14.png" alt="Side School Challenge 14">
                     <div class="project-info">
-                        <h3>Music App</h3>
-                        <p>Redesigning a music streaming platform</p>
+                        <h3>Challenge 14: Automated Project Management Workflow</h3>
+                        <p>Serif AI, Lindy</p>
                     </div>
                 </div>
             </div>
