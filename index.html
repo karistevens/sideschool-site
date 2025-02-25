@@ -152,6 +152,7 @@
             cursor: pointer;
             width: 100%;
             height: 100%;
+            border: 1px solid #e0e0e0;
         }
 
         .modal {
@@ -197,6 +198,17 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: #666;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
         }
 
         .modal-image {
@@ -365,9 +377,9 @@
     <div id="projectModal" class="modal">
         <div class="modal-content">
             <button class="modal-close">&times;</button>
-            <img class="modal-image" src="" alt="Project Image">
             <h2 class="modal-title"></h2>
             <p class="modal-description"></p>
+            <img class="modal-image" src="" alt="Project Image">
         </div>
     </div>
 
@@ -391,8 +403,8 @@
             const projectData = [
                 { title: "Challenge 1: Custom Scoping GPT", description: "A comprehensive case study showcasing the redesign of a lifestyle app. This project demonstrates user-centered design principles and iterative development process.", externalLink: "https://chat.openai.com/g/g-67ae6a9f0bb8819186868aa52b386f5b-kari-s-scope-gpt" },
                 { title: "Challenge 2: AI Presentation", description: "Gamma, ChatGPT", externalLink: "https://gamma.app/docs/FemHealth-Brand-Digital-Redesign-njyk8iwp6ph3tnc" },
-                { title: "Challenge 3: AI Visual Concept Exploration", description: "Using Krea AI to explore various visual concepts and design directions for the project, demonstrating the power of AI in the creative ideation process.", externalLink: null },
-                { title: "Challenge 4: AI Visual Iteration", description: "Krea", externalLink: null },
+                { title: "Challenge 3: AI Visual Concept Exploration", description: "Krea", modalImage: "images/modal_img_challenge3.png", externalLink: null },
+                { title: "Challenge 4: AI Visual Iteration", description: "Krea", modalImage: "images/modal_img_challenge4.png", externalLink: null },
                 { title: "Challenge 5: AI Image Model", description: "Krea", externalLink: "https://www.krea.ai/apps/image/flux?style=ooqzxm0y8" },
                 { title: "Challenge 6: AI Video Generation", description: "Description here", externalLink: "https://vimeo.com/1060218029/62edb5f6f6?share=copy" },
                 { title: "Challenge 7: Royalty Free Music and Sound Effects", description: "Suno, Capcut", externalLink: "https://vimeo.com/1060218019/9bde492c08?share=copy" },
@@ -424,7 +436,9 @@
                     if (projectInfo.externalLink) {
                         window.open(projectInfo.externalLink, '_blank');
                     } else {
-                        modalImage.src = project.querySelector('img').src;
+                        modalImage.src = projectInfo.modalImage || project.querySelector('img').src;
+                        modalTitle.style.display = projectInfo.title ? 'block' : 'none';
+                        modalDescription.style.display = projectInfo.description ? 'block' : 'none';
                         modalTitle.textContent = projectInfo.title;
                         modalDescription.textContent = projectInfo.description;
                         modal.classList.add('active');
