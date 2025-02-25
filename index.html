@@ -112,6 +112,48 @@
             z-index: 1;
         }
 
+        @media (max-width: 768px) {
+            .hero {
+                padding: 2rem 0;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+                margin: 0 auto;
+                margin-bottom: 1rem;
+            }
+
+            .hero-image {
+                max-width: 60%;
+                order: -1;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-image {
+                max-width: 80%;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+
 
 
         .portfolio {
